@@ -1,0 +1,38 @@
+# NICE
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<string.h>
+void   bubble_sort(int arr1[],int sz)
+{   int flag = 1;//优化的地方在这里，可以先判断后在进行
+	int i = 0;
+	int j = 0;
+	int tmp;
+	for (j = 0; j < sz - 1; j++)
+	{
+		for (i = 0; i < sz - 1 -j;i++)//每走一趟，判断两个数的次数就减少一次
+		{
+			if (arr1[i]>arr1[i + 1])
+			{
+				tmp = arr1[i];
+				arr1[i ] = arr1[i+1];
+				arr1[i + 1] = tmp;
+				flag = 0;
+			}
+			if (flag == 1)
+			{
+				break;
+			}
+		}
+	}
+}
+void main()
+{
+	int i;
+	int arr1[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+	int sz = sizeof(arr1) / sizeof(arr1[0]);
+	bubble_sort(arr1,sz);//这个时候有得删去[]，表示的是整个数组
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d", arr1[i]);
+	}
+}
